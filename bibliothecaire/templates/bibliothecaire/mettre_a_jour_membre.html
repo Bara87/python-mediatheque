@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mettre à jour un Membre</title>
+</head>
+<body>
+    <h1>Mettre à jour {{ membre.nom }}</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}  <!-- Affiche le formulaire -->
+        <button type="submit">Enregistrer les modifications</button>
+    </form>
+    <a href="{% url 'membres' %}">Retour à la liste des membres</a>
+</body>
+</html>

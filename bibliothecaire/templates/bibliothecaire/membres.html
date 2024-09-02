@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Liste des Membres</title>
+</head>
+<body>
+    <h1>Liste des Membres</h1>
+    <ul>
+        {% for membre in membres %}
+            <li>
+                {{ membre.nom }} - 
+                {% if membre.bloque %}
+                    Bloqué
+                {% else %}
+                    Actif
+                {% endif %}
+                <!-- Bouton de modification -->
+                <form action="{% url 'mettre_a_jour_membre' membre.id %}" method="get" style="display: inline;">
+                    <button type="submit">Modifier</button>
+                </form>
+
+                <!-- Lien de suppression -->
+                <form action="{% url 'supprimer_membre' membre.id %}" method="post" style="display: inline;">
+                    {% csrf_token %}
+                    <button type="submit">Supprimer</button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'bibliothecaire_menu' %}">Retour au menu </a>
+</body>
+</html>

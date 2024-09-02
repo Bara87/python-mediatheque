@@ -1,0 +1,16 @@
+<!-- templates/bibliothecaire/confirmation_suppression.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Confirmer la Suppression</title>
+</head>
+<body>
+    <h1>Confirmer la Suppression</h1>
+    <p>Êtes-vous sûr de vouloir supprimer "{{ membre.nom }}" ?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Supprimer</button>
+        <a href="{% url 'membres' %}">Annuler</a>
+    </form>
+</body>
+</html>

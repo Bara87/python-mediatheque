@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ajouter un Membre</title>
+</head>
+<body>
+    <h1>Ajouter un Membre</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Ajouter</button>
+    </form>
+    <a href="{% url 'bibliothecaire_menu' %}">Retour au menu</a>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Menu Bibliothécaire</title>
+</head>
+<body>
+    <h1>Menu Bibliothécaire</h1>
+    <ul>
+        <li><a href="{% url 'membres' %}">Liste des Membres</a></li>
+        <li><a href="{% url 'medias' %}">Liste des Médias</a></li>       
+        <li><a href="{% url 'ajout_membre' %}">Ajouter un Membre</a></li>
+        <li><a href="{% url 'ajouter_emprunt' %}">Ajouter un Emprunt</a></li>
+        <li><a href="{% url 'ajouter_media' %}">Ajouter un média</a></li>
+    </ul>
+    <a href="{% url 'home' %}">Retour à l'accueil</a>
+</body>
+</html>

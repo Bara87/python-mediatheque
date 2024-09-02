@@ -1,0 +1,13 @@
+Copier le code
+<!-- bibliothecaire/templates/bibliothecaire/error.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Erreur</title>
+</head>
+<body>
+    <h1>Erreur</h1>
+    <p>{{ message }}</p>
+    <a href="{% if error_type == 'emprunt' %}{% url 'ajouter_emprunt' %}{% else %}{% url 'medias' %}{% endif %}">Retour</a>
+</body>
+</html>

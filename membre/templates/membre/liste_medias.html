@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Liste des Médias</title>
+</head>
+<body>
+    <h1>Liste des Médias</h1>
+    <ul>
+        {% for media in medias %}
+            <li>
+                {{ media.nom }} - 
+                {% if media.disponible %}
+                    Disponible
+                {% else %}
+                    Non disponible
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'membre_menu' %}">Retour au menu</a>
+</body>
+</html>

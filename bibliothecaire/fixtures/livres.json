@@ -1,0 +1,78 @@
+[
+    {
+        "model": "bibliothecaire.media",
+        "pk": 1,
+        "fields": {
+            "nom": "L'Aventure ambigue",
+            "disponible": true,
+            "date_emprunt": null,
+            "date_retour": null,
+            "emprunteur": null
+        }
+    },
+    {
+        "model": "bibliothecaire.livre",
+        "pk": 1,
+        "fields": {
+            "media_ptr": 1,
+            "auteur": "Cheikh Hamidou Kane"
+        }
+    },
+    {
+        "model": "bibliothecaire.media",
+        "pk": 2,
+        "fields": {
+            "nom": "Une si longue lettre",
+            "disponible": true,
+            "date_emprunt": null,
+            "date_retour": null,
+            "emprunteur": null
+        }
+    },
+    {
+        "model": "bibliothecaire.livre",
+        "pk": 2,
+        "fields": {
+            "media_ptr": 2,
+            "auteur": "Mariama Ba"
+        }
+    },
+    {
+        "model": "bibliothecaire.media",
+        "pk": 3,
+        "fields": {
+            "nom": "Germinal",
+            "disponible": true,
+            "date_emprunt": null,
+            "date_retour": null,
+            "emprunteur": null
+        }
+    },
+    {
+        "model": "bibliothecaire.livre",
+        "pk": 3,
+        "fields": {
+            "media_ptr": 3,
+            "auteur": "Emile Zola"
+        }
+    },
+    {
+        "model": "bibliothecaire.media",
+        "pk": 4,
+        "fields": {
+            "nom": "Vol de nuit",
+            "disponible": true,
+            "date_emprunt": null,
+            "date_retour": null,
+            "emprunteur": null
+        }
+    },
+    {
+        "model": "bibliothecaire.livre",
+        "pk": 4,
+        "fields": {
+            "media_ptr": 4,
+            "auteur": "Antoine de Saint-Exupéry"
+        }
+    }
+]

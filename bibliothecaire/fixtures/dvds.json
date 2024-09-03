@@ -1,0 +1,59 @@
+[
+    {
+        "model": "bibliothecaire.media",
+        "pk": 5,
+        "fields": {
+            "nom": "Inception",
+            "disponible": true,
+            "date_emprunt": null,
+            "date_retour": null,
+            "emprunteur": null
+        }
+    },
+    {
+        "model": "bibliothecaire.dvd",
+        "pk": 5,
+        "fields": {
+            "media_ptr": 5,
+            "realisateur": "Christopher Nolan"
+        }
+    },
+    {
+        "model": "bibliothecaire.media",
+        "pk": 6,
+        "fields": {
+            "nom": "The Matrix",
+            "disponible": true,
+            "date_emprunt": null,
+            "date_retour": null,
+            "emprunteur": null
+        }
+    },
+    {
+        "model": "bibliothecaire.dvd",
+        "pk": 6,
+        "fields": {
+            "media_ptr": 6,
+            "realisateur": "Wachowskis"
+        }
+    },
+    {
+        "model": "bibliothecaire.media",
+        "pk": 7,
+        "fields": {
+            "nom": "Interstellar",
+            "disponible": true,
+            "date_emprunt": null,
+            "date_retour": null,
+            "emprunteur": null
+        }
+    },
+    {
+        "model": "bibliothecaire.dvd",
+        "pk": 7,
+        "fields": {
+            "media_ptr": 7,
+            "realisateur": "Christopher Nolan"
+        }
+    }
+]

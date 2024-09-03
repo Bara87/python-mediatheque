@@ -1,0 +1,78 @@
+[
+    {
+        "model": "bibliothecaire.media",
+        "pk": 11,
+        "fields": {
+            "nom": "Catan",
+            "disponible": true,
+            "date_emprunt": null,
+            "date_retour": null,
+            "emprunteur": null
+        }
+    },
+    {
+        "model": "bibliothecaire.jeudeplateau",
+        "pk": 11,
+        "fields": {
+            "media_ptr": 11,
+            "createur": "Klaus Teuber"
+        }
+    },
+    {
+        "model": "bibliothecaire.media",
+        "pk": 12,
+        "fields": {
+            "nom": "Pandemic",
+            "disponible": true,
+            "date_emprunt": null,
+            "date_retour": null,
+            "emprunteur": null
+        }
+    },
+    {
+        "model": "bibliothecaire.jeudeplateau",
+        "pk": 12,
+        "fields": {
+            "media_ptr": 12,
+            "createur": "Matt Leacock"
+        }
+    },
+    {
+        "model": "bibliothecaire.media",
+        "pk": 13,
+        "fields": {
+            "nom": "Terraforming Mars",
+            "disponible": true,
+            "date_emprunt": null,
+            "date_retour": null,
+            "emprunteur": null
+        }
+    },
+    {
+        "model": "bibliothecaire.jeudeplateau",
+        "pk": 13,
+        "fields": {
+            "media_ptr": 13,
+            "createur": "Jacob Fryxelius"
+        }
+    },
+    {
+        "model": "bibliothecaire.media",
+        "pk": 14,
+        "fields": {
+            "nom": "Wingspan",
+            "disponible": true,
+            "date_emprunt": null,
+            "date_retour": null,
+            "emprunteur": null
+        }
+    },
+    {
+        "model": "bibliothecaire.jeudeplateau",
+        "pk": 14,
+        "fields": {
+            "media_ptr": 14,
+            "createur": "Elizabeth Hargrave"
+        }
+    }
+]

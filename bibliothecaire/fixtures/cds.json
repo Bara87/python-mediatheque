@@ -1,0 +1,59 @@
+[
+    {
+        "model": "bibliothecaire.media",
+        "pk": 8,
+        "fields": {
+            "nom": "Thriller",
+            "disponible": true,
+            "date_emprunt": null,
+            "date_retour": null,
+            "emprunteur": null
+        }
+    },
+    {
+        "model": "bibliothecaire.cd",
+        "pk": 8,
+        "fields": {
+            "media_ptr": 8,
+            "artiste": "Michael Jackson"
+        }
+    },
+    {
+        "model": "bibliothecaire.media",
+        "pk": 9,
+        "fields": {
+            "nom": "African Giant",
+            "disponible": true,
+            "date_emprunt": null,
+            "date_retour": null,
+            "emprunteur": null
+        }
+    },
+    {
+        "model": "bibliothecaire.cd",
+        "pk": 9,
+        "fields": {
+            "media_ptr": 9,
+            "artiste": "Burna Boy"
+        }
+    },
+    {
+        "model": "bibliothecaire.media",
+        "pk": 10,
+        "fields": {
+            "nom": "Jupiter",
+            "disponible": true,
+            "date_emprunt": null,
+            "date_retour": null,
+            "emprunteur": null
+        }
+    },
+    {
+        "model": "bibliothecaire.cd",
+        "pk": 10,
+        "fields": {
+            "media_ptr": 10,
+            "artiste": "Youssou N'Dour"
+        }
+    }
+]

@@ -1,19 +1,27 @@
+import logging
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Emprunteur, Media, Emprunt, JeuDePlateau
 from .forms import EmprunteurForm, LivreForm, DVDForm, CDForm, JeuDePlateauForm
 
+# Configuration du logger
+logger = logging.getLogger(__name__)
+
 def menu(request):
+    logger.info("Affichage du menu principal du bibliothécaire")
     return render(request, 'bibliothecaire/menu.html')
 
 def membres(request):
+    logger.info("Affichage de la liste des membres")
     membres = Emprunteur.objects.all()
     return render(request, 'bibliothecaire/membres.html', {'membres': membres})
 
 def medias(request):
+    logger.info("Affichage de la liste des médias")
     medias = Media.objects.all()
     return render(request, 'bibliothecaire/medias.html', {'medias': medias})
 
 def emprunts(request):
+    logger.info("Affichage de la liste des emprunts")
     emprunts = Emprunt.objects.all()
     return render(request, 'bibliothecaire/emprunts.html', {'emprunts': emprunts})
 
@@ -22,26 +30,34 @@ def ajout_membre(request):
         form = EmprunteurForm(request.POST)
         if form.is_valid():
             form.save()
+            logger.info(f"Ajout d'un nouveau membre: {form.cleaned_data['nom']}")
             return redirect('membres')
+        else:
+            logger.warning("Formulaire d'ajout de membre invalide")
     else:
         form = EmprunteurForm()
+        logger.info("Affichage du formulaire d'ajout de membre")
     return render(request, 'bibliothecaire/ajout_membre.html', {'form': form})
 
 def supprimer_membre(request, membre_id):
     membre = get_object_or_404(Emprunteur, id=membre_id)
+    logger.info(f"Tentative de suppression du membre: {membre.nom}")
     
     # Vérifiez si le membre a des emprunts non retournés
     emprunts_non_restitues = Emprunt.objects.filter(emprunteur=membre, date_retour__isnull=True)
     
     if emprunts_non_restitues.exists():
+        logger.warning(f"Échec de la suppression du membre {membre.nom} car il a des emprunts non retournés")
         return render(request, 'error.html', {
             'message': "Impossible de supprimer ce membre car il a des emprunts non retournés."
         })
 
     if request.method == 'POST':
         membre.delete()
+        logger.info(f"Membre supprimé: {membre.nom}")
         return redirect('membres')
     
+    logger.info(f"Affichage de la page de confirmation pour la suppression du membre: {membre.nom}")
     return render(request, 'confirmation_suppression.html', {'membre': membre})
 
 def ajouter_emprunt(request):

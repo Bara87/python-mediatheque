@@ -1,26 +1,97 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajouter un média</title>
+    <title>Ajouter un Média</title>
+    <style>
+        .hidden {
+            display: none;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const typeMediaSelect = document.getElementById('type_media');
+            const auteurField = document.getElementById('auteur_field');
+            const realisateurField = document.getElementById('realisateur_field');
+            const createurField = document.getElementById('createur_field');
+            const artisteField = document.getElementById('artiste_field');
+
+            function updateFields() {
+                const mediaType = typeMediaSelect.value;
+                // Cacher tous les champs
+                auteurField.classList.add('hidden');
+                realisateurField.classList.add('hidden');
+                createurField.classList.add('hidden');
+                artisteField.classList.add('hidden');
+
+                // Afficher le champ approprié
+                if (mediaType === 'livre') {
+                    auteurField.classList.remove('hidden');
+                } else if (mediaType === 'dvd') {
+                    realisateurField.classList.remove('hidden');
+                } else if (mediaType === 'cd') {
+                    artisteField.classList.remove('hidden');
+                } else if (mediaType === 'jeu_de_plateau') {
+                    createurField.classList.remove('hidden');
+                }
+            }
+
+            // Ajouter un écouteur d'événement pour le changement de sélection
+            typeMediaSelect.addEventListener('change', updateFields);
+            // Mettre à jour les champs lors du chargement initial
+            updateFields();
+        });
+    </script>
 </head>
 <body>
-    <h1>Ajouter un média</h1>
+    <h1>Ajouter un Média</h1>
 
     <form method="post">
         {% csrf_token %}
-        <label for="type_media">Type de média:</label>
-        <select name="type_media" id="type_media">
-            <option value="livre">Livre</option>
-            <option value="dvd">DVD</option>
-            <option value="cd">CD</option>
-            <option value="jeu_de_plateau">Jeu de Plateau</option>
-        </select>
-        <div>
-            {{ form.as_p }}
+        
+        <div class="form-group">
+            <label for="type_media">Type de média:</label>
+            <select name="type_media" id="type_media">
+                <option value="" disabled selected>Sélectionnez un média</option>
+                <option value="livre">Livre</option>
+                <option value="dvd">DVD</option>
+                <option value="cd">CD</option>
+                <option value="jeu_de_plateau">Jeu de Plateau</option>
+            </select>
         </div>
-        <button type="submit">Ajouter</button>
+
+        <div class="form-group">
+            <label for="nom">Nom:</label>
+            <input type="text" id="nom" name="nom" required>
+        </div>
+
+        <div id="auteur_field" class="hidden form-group">
+            <label for="auteur">Auteur:</label>
+            <input type="text" id="auteur" name="auteur">
+        </div>
+
+        <div id="realisateur_field" class="hidden form-group">
+            <label for="realisateur">Réalisateur:</label>
+            <input type="text" id="realisateur" name="realisateur">
+        </div>
+
+        <div id="createur_field" class="hidden form-group">
+            <label for="createur">Créateur:</label>
+            <input type="text" id="createur" name="createur">
+        </div>
+
+        <div id="artiste_field" class="hidden form-group">
+            <label for="artiste">Artiste:</label>
+            <input type="text" id="artiste" name="artiste">
+        </div>
+
+        
+
+        <button type="submit" style="margin-bottom: 20px;">Ajouter</button>
     </form>
 
     <a href="{% url 'bibliothecaire_menu' %}">Retour au menu</a>

@@ -3,6 +3,7 @@
         "model": "bibliothecaire.media",
         "pk": 1,
         "fields": {
+            "quantite_disponible": 4,
             "nom": "L'Aventure ambigue",
             "disponible": true,
             "date_emprunt": null,
@@ -22,6 +23,7 @@
         "model": "bibliothecaire.media",
         "pk": 2,
         "fields": {
+            "quantite_disponible": 4,
             "nom": "Une si longue lettre",
             "disponible": true,
             "date_emprunt": null,
@@ -41,6 +43,7 @@
         "model": "bibliothecaire.media",
         "pk": 3,
         "fields": {
+            "quantite_disponible": 4,
             "nom": "Germinal",
             "disponible": true,
             "date_emprunt": null,
@@ -60,6 +63,7 @@
         "model": "bibliothecaire.media",
         "pk": 4,
         "fields": {
+            "quantite_disponible": 4,
             "nom": "Vol de nuit",
             "disponible": true,
             "date_emprunt": null,

@@ -1,22 +1,193 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Liste des Médias</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        .table-container {
+            margin-bottom: 40px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0 auto;
+            table-layout: fixed; /* Fixed table layout */
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            overflow: hidden; /* Ensure content does not overflow */
+            text-overflow: ellipsis; /* Display ellipsis for overflowed content */
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+        .table-container h2 {
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
+        /* Optional: Define column widths for better alignment */
+        th:nth-child(1), td:nth-child(1) { width: 30%; } /* Adjust width as needed */
+        th:nth-child(2), td:nth-child(2) { width: 30%; }
+        th:nth-child(3), td:nth-child(3) { width: 20%; }
+        th:nth-child(4), td:nth-child(4) { width: 20%; }
+    </style>
 </head>
 <body>
+    <a href="{% url 'membre_menu' %}" class="back-link">Retour au Menu Principal</a>
     <h1>Liste des Médias</h1>
-    <ul>
-        {% for media in medias %}
-            <li>
-                {{ media.nom }} - 
-                {% if media.disponible %}
-                    Disponible
-                {% else %}
-                    Non disponible
-                {% endif %}
-            </li>
-        {% endfor %}
-    </ul>
-    <a href="{% url 'membre_menu' %}">Retour au menu</a>
+
+    <!-- Section des Livres -->
+    <div class="table-container">
+        <h2>Livres</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Auteur</th>
+                    <th>Disponibilité</th>
+                    <th>Quantité Disponible</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for livre in livres %}
+                    <tr>
+                        <td>{{ livre.nom }}</td>
+                        <td>{{ livre.auteur }}</td>
+                        <td>
+                            {% if livre.disponible %}
+                                Oui
+                            {% else %}
+                                Non
+                            {% endif %}
+                        </td>
+                        <td>{{ livre.quantite_disponible }}</td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="4">Aucun livre disponible.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Section des DVDs -->
+    <div class="table-container">
+        <h2>DVDs</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Réalisateur</th>
+                    <th>Disponibilité</th>
+                    <th>Quantité Disponible</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for dvd in dvds %}
+                    <tr>
+                        <td>{{ dvd.nom }}</td>
+                        <td>{{ dvd.realisateur }}</td>
+                        <td>
+                            {% if dvd.disponible %}
+                                Oui
+                            {% else %}
+                                Non
+                            {% endif %}
+                        </td>
+                        <td>{{ dvd.quantite_disponible }}</td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="4">Aucun DVD disponible.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Section des CDs -->
+    <div class="table-container">
+        <h2>CDs</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Artiste</th>
+                    <th>Disponibilité</th>
+                    <th>Quantité Disponible</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cd in cds %}
+                    <tr>
+                        <td>{{ cd.nom }}</td>
+                        <td>{{ cd.artiste }}</td>
+                        <td>
+                            {% if cd.disponible %}
+                                Oui
+                            {% else %}
+                                Non
+                            {% endif %}
+                        </td>
+                        <td>{{ cd.quantite_disponible }}</td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="4">Aucun CD disponible.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Section des Jeux de Plateau -->
+    <div class="table-container">
+        <h2>Jeux de Plateau</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Créateur</th>
+                    <th>Disponibilité</th>
+                    <th>Quantité Disponible</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for jeu in jeux %}
+                    <tr>
+                        <td>{{ jeu.nom }}</td>
+                        <td>{{ jeu.createur }}</td>
+                        <td>
+                            {% if jeu.disponible %}
+                                Oui
+                            {% else %}
+                                Non
+                            {% endif %}
+                        </td>
+                        <td>{{ jeu.quantite_disponible }}</td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="4">Aucun jeu de plateau disponible.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>

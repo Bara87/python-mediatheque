@@ -3,6 +3,7 @@
         "model": "bibliothecaire.media",
         "pk": 8,
         "fields": {
+            "quantite_disponible": 4,
             "nom": "Thriller",
             "disponible": true,
             "date_emprunt": null,
@@ -22,6 +23,7 @@
         "model": "bibliothecaire.media",
         "pk": 9,
         "fields": {
+            "quantite_disponible": 4,
             "nom": "African Giant",
             "disponible": true,
             "date_emprunt": null,
@@ -41,6 +43,7 @@
         "model": "bibliothecaire.media",
         "pk": 10,
         "fields": {
+            "quantite_disponible": 4,
             "nom": "Jupiter",
             "disponible": true,
             "date_emprunt": null,

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Détails de {{ emprunteur.nom }}</title>
+    <style>
+        /* Ajoute un espace entre chaque membre */
+        li {
+            margin-bottom: 20px; /* Espace entre chaque membre */
+        }
+       
+    </style>
+</head>
+<body>
+    <h1>Détails de {{ emprunteur.nom }}</h1>
+    <p>Status : {% if emprunteur.bloque %} Bloqué {% else %} Actif {% endif %}</p>
+
+    <h2>Emprunts actuels</h2>
+    <ul>
+        {% if emprunts %}
+            {% for emprunt in emprunts %}
+                <li>
+                    {{ emprunt.media.nom }} - Emprunté le {{ emprunt.date_emprunt }}
+                    
+                    <!-- Formulaire de suppression -->
+                    <form action="{% url 'supprimer_emprunt' emprunt.id %}" method="post" style="display: inline;">
+                        {% csrf_token %}
+                        <button type="submit">Supprimer</button>
+                    </form>
+                </li>
+            {% endfor %}
+        {% else %}
+            <li>Aucun emprunt actuel</li>
+        {% endif %}
+    </ul>
+
+    <a href="{% url 'membres' %}">Retour à la liste des membres</a>
+</body>
+</html>

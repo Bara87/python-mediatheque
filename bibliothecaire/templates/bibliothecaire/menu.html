@@ -2,6 +2,14 @@
 <html>
 <head>
     <title>Menu Bibliothécaire</title>
+
+    <style>
+        /* Ajoute un espace entre chaque membre */
+        li {
+            margin-bottom: 20px; /* Espace entre chaque membre */
+        }
+       
+    </style>
 </head>
 <body>
     <h1>Menu Bibliothécaire</h1>
@@ -10,6 +18,7 @@
         <li><a href="{% url 'medias' %}">Liste des Médias</a></li>       
         <li><a href="{% url 'ajout_membre' %}">Ajouter un Membre</a></li>
         <li><a href="{% url 'ajouter_emprunt' %}">Ajouter un Emprunt</a></li>
+        <li><a href="{% url 'emprunts' %}">Emprunts en cours</a></li>
         <li><a href="{% url 'ajouter_media' %}">Ajouter un média</a></li>
     </ul>
     <a href="{% url 'home' %}">Retour à l'accueil</a>

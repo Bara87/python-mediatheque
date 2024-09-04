@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des Emprunts</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse; /* Fusionne les bordures pour éviter les doubles lignes */
+            margin: 0 auto;
+            background-color: #fff;
+        }
+        
+        th, td {
+            padding: 10px; /* Espacement intérieur des cellules */
+            text-align: left; /* Alignement du texte à gauche */
+            border: 1px solid #ddd; /* Bordure légère autour des cellules */
+        }
+        
+        th {
+            background-color: #f2f2f2; /* Couleur de fond des en-têtes de colonne */
+            color: #333; /* Couleur du texte des en-têtes */
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f9f9f9; /* Couleur de fond pour les lignes paires */
+        }
+        
+        tr:hover {
+            background-color: #eaeaea; /* Couleur de fond lors du survol de la ligne */
+        }
+
+        a {
+            display: block;
+            width: max-content;
+            margin: 20px auto;
+            text-align: center;
+            text-decoration: none;
+            color: #007bff;
+            font-size: 18px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Liste des Emprunts</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Media</th>
+                <th>Emprunteur</th>
+                <th>Date d'emprunt</th>
+                <th>Date de retour estimée</th>
+                <th>Situation</th> <!-- Nouvelle colonne pour la situation -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for emprunt in emprunts %}
+            <tr>
+                <td>{{ emprunt.media.nom }}</td>
+                <td>{{ emprunt.emprunteur.nom }}</td>
+                <td>{{ emprunt.date_emprunt|date:"d/m/Y" }}</td>
+                <td>{{ emprunt.date_retour_estimee|date:"d/m/Y" }}</td>
+                <td>
+                    {% if emprunt.est_en_retard %}
+                        <span class="situation-en-retard">En retard</span>
+                    {% else %}
+                        <span class="situation-pas-de-retard" style="color: green;">Pas de retard</span>
+                    {% endif %}
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5">Aucun emprunt en cours.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{% url 'ajouter_emprunt' %}">Ajouter un nouvel emprunt</a>
+</body>
+</html>

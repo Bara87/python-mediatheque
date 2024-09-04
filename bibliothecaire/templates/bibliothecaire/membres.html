@@ -2,6 +2,16 @@
 <html>
 <head>
     <title>Liste des Membres</title>
+    <style>
+        /* Ajoute un espace entre chaque membre */
+        li {
+            margin-bottom: 20px; /* Espace entre chaque membre */
+        }
+        .action-links {
+            padding-right: 10px; /* Ajoute un espacement sur la droite */
+            padding-left: 10px;
+        }
+    </style>
 </head>
 <body>
     <h1>Liste des Membres</h1>
@@ -14,8 +24,9 @@
                 {% else %}
                     Actif
                 {% endif %}
+                <a href="{% url 'afficher_membre' membre.id %}" class="action-links">Détails</a>
                 <!-- Bouton de modification -->
-                <form action="{% url 'mettre_a_jour_membre' membre.id %}" method="get" style="display: inline;">
+                <form action="{% url 'mettre_a_jour_membre' membre.id %}" method="get" style="display: inline;" style="display: inline;" class="action-links">
                     <button type="submit">Modifier</button>
                 </form>
 
@@ -24,6 +35,7 @@
                     {% csrf_token %}
                     <button type="submit">Supprimer</button>
                 </form>
+                
             </li>
         {% endfor %}
     </ul>

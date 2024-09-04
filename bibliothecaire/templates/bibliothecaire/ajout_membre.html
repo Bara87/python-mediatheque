@@ -8,8 +8,8 @@
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Ajouter</button>
+        <button type="submit" style="margin-top: 20px; margin-bottom: 20px;">Ajouter</button>
     </form>
-    <a href="{% url 'bibliothecaire_menu' %}">Retour au menu</a>
+    <a href="{% url 'bibliothecaire_menu' %}" >Retour au menu</a>
 </body>
 </html>

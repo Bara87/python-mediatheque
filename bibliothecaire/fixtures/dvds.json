@@ -3,6 +3,7 @@
         "model": "bibliothecaire.media",
         "pk": 5,
         "fields": {
+            "quantite_disponible": 4,
             "nom": "Inception",
             "disponible": true,
             "date_emprunt": null,
@@ -22,6 +23,7 @@
         "model": "bibliothecaire.media",
         "pk": 6,
         "fields": {
+            "quantite_disponible": 4,
             "nom": "The Matrix",
             "disponible": true,
             "date_emprunt": null,
@@ -41,6 +43,7 @@
         "model": "bibliothecaire.media",
         "pk": 7,
         "fields": {
+            "quantite_disponible": 4,
             "nom": "Interstellar",
             "disponible": true,
             "date_emprunt": null,

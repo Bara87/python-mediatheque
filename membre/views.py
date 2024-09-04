@@ -1,12 +1,23 @@
+# membres/views.py
 from django.shortcuts import render
-from bibliothecaire.models import Media
+from .models import Livre, DVD, CD, JeuDePlateau
 
-def index(request):
-    return render(request, 'index.html')
+
 
 def menu(request):
     return render(request, 'membre/menu.html')
 
 def liste_medias(request):
-    medias = Media.objects.all()
-    return render(request, 'membre/liste_medias.html', {'medias': medias})
+    livres = Livre.objects.all()
+    dvds = DVD.objects.all()
+    cds = CD.objects.all()
+    jeux = JeuDePlateau.objects.all()
+
+    context = {
+        'livres': livres,
+        'dvds': dvds,
+        'cds': cds,
+        'jeux': jeux,
+    }
+
+    return render(request, 'membre/liste_medias.html', context)

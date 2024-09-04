@@ -1,0 +1,62 @@
+[
+    {
+        "model": "membre.media",
+        "pk": 8,
+        "fields": {
+            "quantite_disponible": 4,
+            "nom": "Thriller",
+            "disponible": true,
+            "date_emprunt": null,
+            "date_retour": null
+            
+        }
+    },
+    {
+        "model": "membre.cd",
+        "pk": 8,
+        "fields": {
+            "media_ptr": 8,
+            "artiste": "Michael Jackson"
+        }
+    },
+    {
+        "model": "membre.media",
+        "pk": 9,
+        "fields": {
+            "quantite_disponible": 4,
+            "nom": "African Giant",
+            "disponible": true,
+            "date_emprunt": null,
+            "date_retour": null
+            
+        }
+    },
+    {
+        "model": "membre.cd",
+        "pk": 9,
+        "fields": {
+            "media_ptr": 9,
+            "artiste": "Burna Boy"
+        }
+    },
+    {
+        "model": "membre.media",
+        "pk": 10,
+        "fields": {
+            "quantite_disponible": 4,
+            "nom": "Jupiter",
+            "disponible": true,
+            "date_emprunt": null,
+            "date_retour": null
+            
+        }
+    },
+    {
+        "model": "membre.cd",
+        "pk": 10,
+        "fields": {
+            "media_ptr": 10,
+            "artiste": "Youssou N'Dour"
+        }
+    }
+]

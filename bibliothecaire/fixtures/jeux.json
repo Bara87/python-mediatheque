@@ -3,6 +3,7 @@
         "model": "bibliothecaire.media",
         "pk": 11,
         "fields": {
+            "quantite_disponible": 4,
             "nom": "Catan",
             "disponible": true,
             "date_emprunt": null,
@@ -22,6 +23,7 @@
         "model": "bibliothecaire.media",
         "pk": 12,
         "fields": {
+            "quantite_disponible": 4,
             "nom": "Pandemic",
             "disponible": true,
             "date_emprunt": null,
@@ -41,6 +43,7 @@
         "model": "bibliothecaire.media",
         "pk": 13,
         "fields": {
+            "quantite_disponible": 4,
             "nom": "Terraforming Mars",
             "disponible": true,
             "date_emprunt": null,
@@ -60,6 +63,7 @@
         "model": "bibliothecaire.media",
         "pk": 14,
         "fields": {
+            "quantite_disponible": 4,
             "nom": "Wingspan",
             "disponible": true,
             "date_emprunt": null,

@@ -1,0 +1,82 @@
+[
+    {
+        "model": "membre.media",
+        "pk": 11,
+        "fields": {
+            "quantite_disponible": 4,
+            "nom": "Catan",
+            "disponible": true,
+            "date_emprunt": null,
+            "date_retour": null
+            
+        }
+    },
+    {
+        "model": "membre.jeudeplateau",
+        "pk": 11,
+        "fields": {
+            "media_ptr": 11,
+            "createur": "Klaus Teuber"
+        }
+    },
+    {
+        "model": "membre.media",
+        "pk": 12,
+        "fields": {
+            "quantite_disponible": 4,
+            "nom": "Pandemic",
+            "disponible": true,
+            "date_emprunt": null,
+            "date_retour": null
+            
+        }
+    },
+    {
+        "model": "membre.jeudeplateau",
+        "pk": 12,
+        "fields": {
+            "media_ptr": 12,
+            "createur": "Matt Leacock"
+        }
+    },
+    {
+        "model": "membre.media",
+        "pk": 13,
+        "fields": {
+            "quantite_disponible": 4,
+            "nom": "Terraforming Mars",
+            "disponible": true,
+            "date_emprunt": null,
+            "date_retour": null
+            
+        }
+    },
+    {
+        "model": "membre.jeudeplateau",
+        "pk": 13,
+        "fields": {
+            "media_ptr": 13,
+            "createur": "Jacob Fryxelius"
+        }
+    },
+    {
+        "model": "membre.media",
+        "pk": 14,
+        "fields": {
+            "quantite_disponible": 4,
+            "nom": "Wingspan",
+            "disponible": true,
+            "date_emprunt": null,
+            "date_retour": null
+            
+        }
+    },
+    {
+        "model": "membre.jeudeplateau",
+        "pk": 14,
+        "fields": {
+            "media_ptr": 14,
+            "createur": "Elizabeth Hargrave"
+        }
+    }
+]

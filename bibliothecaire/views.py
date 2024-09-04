@@ -1,6 +1,6 @@
 import logging
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Emprunteur, Media, Emprunt, JeuDePlateau
+from .models import Emprunteur, Media, Emprunt, JeuDePlateau, Livre, CD, DVD
 from .forms import EmprunteurForm, LivreForm, DVDForm, CDForm, JeuDePlateauForm
 
 # Configuration du logger
@@ -15,10 +15,30 @@ def membres(request):
     membres = Emprunteur.objects.all()
     return render(request, 'bibliothecaire/membres.html', {'membres': membres})
 
+def afficher_membre(request, emprunter_id):
+    # Récupère l'emprunteur et ses emprunts
+    emprunteur = get_object_or_404(Emprunteur, id=emprunter_id)
+    emprunts = Emprunt.objects.filter(emprunteur=emprunteur, date_retour__isnull=True)
+
+    # Rendre le template avec les détails de l'emprunteur et ses emprunts
+    return render(request, 'bibliothecaire/detail.html', {
+        'emprunteur': emprunteur,
+        'emprunts': emprunts,
+    })
+
 def medias(request):
-    logger.info("Affichage de la liste des médias")
-    medias = Media.objects.all()
-    return render(request, 'bibliothecaire/medias.html', {'medias': medias})
+    livres = Livre.objects.all()
+    cds = CD.objects.all()
+    dvds = DVD.objects.all()
+    jeux = JeuDePlateau.objects.all()
+    
+    context = {
+        'livres': livres,
+        'cds': cds,
+        'dvds': dvds,
+        'jeux': jeux
+    }
+    return render(request, 'bibliothecaire/medias.html', context)
 
 def emprunts(request):
     logger.info("Affichage de la liste des emprunts")
@@ -48,7 +68,7 @@ def supprimer_membre(request, membre_id):
     
     if emprunts_non_restitues.exists():
         logger.warning(f"Échec de la suppression du membre {membre.nom} car il a des emprunts non retournés")
-        return render(request, 'error.html', {
+        return render(request, 'bibliothecaire/error.html', {
             'message': "Impossible de supprimer ce membre car il a des emprunts non retournés."
         })
 
@@ -58,7 +78,7 @@ def supprimer_membre(request, membre_id):
         return redirect('membres')
     
     logger.info(f"Affichage de la page de confirmation pour la suppression du membre: {membre.nom}")
-    return render(request, 'confirmation_suppression.html', {'membre': membre})
+    return render(request, 'bibliothecaire/confirmation_suppression.html', {'membre': membre})
 
 def ajouter_emprunt(request):
     if request.method == 'POST':
@@ -78,11 +98,24 @@ def ajouter_emprunt(request):
             return render(request, 'bibliothecaire/error_media_emprunt.html', {'message': "Le média n'est pas disponible ou il s'agit d'un jeu de plateau.", 'error_type': 'media'})
 
         Emprunt.objects.create(media=media, emprunteur=emprunteur)
+
+        media.quantite_disponible -= 1
+        media.save()
+
         return redirect('emprunts')
 
     membres = Emprunteur.objects.all()
     medias = Media.objects.exclude(id__in=JeuDePlateau.objects.values_list('id', flat=True))
     return render(request, 'bibliothecaire/ajouter_emprunt.html', {'membres': membres, 'medias': medias})
+
+def supprimer_emprunt(request, emprunt_id):
+    if request.method == 'POST':
+        emprunt = get_object_or_404(Emprunt, id=emprunt_id)
+        emprunter_id = emprunt.emprunteur.id
+        emprunt.delete()  # Supprimer l'emprunt
+        return redirect('afficher_membre', emprunter_id=emprunter_id)
+    return redirect('error_page')  # Page d'erreur si la méthode n'est pas POST
+
 
 def mettre_a_jour_membre(request, membre_id):
     membre = get_object_or_404(Emprunteur, id=membre_id)

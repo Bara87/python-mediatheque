@@ -1,0 +1,42 @@
+[
+    {
+        "model": "membre.emprunteur",
+        "pk": 1,
+        "fields": {
+            "nom": "Bara Dia",
+            "bloque": true
+        }
+    },
+    {
+        "model": "membre.emprunteur",
+        "pk": 2,
+        "fields": {
+            "nom": "Alice Dupont",
+            "bloque": false
+        }
+    },
+    {
+        "model": "membre.emprunteur",
+        "pk": 3,
+        "fields": {
+            "nom": "Jean Martin",
+            "bloque": true
+        }
+    },
+    {
+        "model": "membre.emprunteur",
+        "pk": 4,
+        "fields": {
+            "nom": "Clara Bernard",
+            "bloque": false
+        }
+    },
+    {
+        "model": "membre.emprunteur",
+        "pk": 5,
+        "fields": {
+            "nom": "David Leroy",
+            "bloque": true
+        }
+    }
+]

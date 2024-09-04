@@ -22,6 +22,7 @@ class Emprunteur(models.Model):
         return Emprunt.objects.filter(emprunteur=self, date_retour__isnull=True).count()
 
 class Media(models.Model):
+    quantite_disponible = models.PositiveIntegerField(default=1)  # Quantité disponible pour emprunt
     nom = models.CharField(max_length=100)
     disponible = models.BooleanField(default=True)
     date_emprunt = models.DateTimeField(null=True, blank=True)
@@ -31,13 +32,18 @@ class Media(models.Model):
     def __str__(self):
         return f"{self.nom} - {'Disponible' if self.disponible else 'Non disponible'}"
 
-    def est_disponible_pour_emprunt(self):
-        return self.disponible and not isinstance(self, JeuDePlateau)
-
+    
     def est_en_retard(self):
         if self.date_retour:
             return self.date_retour < timezone.now()
         return self.date_emprunt and timezone.now() > self.date_emprunt + timedelta(days=7)
+
+    def est_disponible_pour_emprunt(self):
+        return (self.quantite_disponible > 0 and self.disponible) and not isinstance(self, JeuDePlateau)
+    
+    
+
+
 
     def save(self, *args, **kwargs):
         if self.date_retour:
@@ -80,3 +86,9 @@ class Emprunt(models.Model):
         if self.date_retour:
             return self.date_retour < timezone.now()
         return timezone.now() > self.date_emprunt + timedelta(days=7)
+    
+    def date_retour_estimee(self):
+        """Calcul de la date de retour estimée, 7 jours après l'emprunt"""
+        if self.date_emprunt:
+            return self.date_emprunt + timedelta(days=7)
+        return None
